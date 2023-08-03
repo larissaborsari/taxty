@@ -7,10 +7,14 @@ import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -84,9 +88,14 @@ public class TextEditor extends JFrame implements ActionListener {
 		
 		menuBar = new JMenuBar();
 		fileMenu = new JMenu("File");
+		
 		openItem = new JMenuItem("Open");
 		saveItem = new JMenuItem("Save");
 		exitItem = new JMenuItem("Exit");
+		
+		openItem.addActionListener(this);
+		saveItem.addActionListener(this);
+		exitItem.addActionListener(this);
 		
 		fileMenu.add(openItem);
 		fileMenu.add(saveItem);
@@ -117,6 +126,41 @@ public class TextEditor extends JFrame implements ActionListener {
 		
 		if(e.getSource() == fontBox) {
 			textArea.setFont(new Font((String) fontBox.getSelectedItem(), Font.PLAIN, textArea.getFont().getSize()));
+		}
+		
+		if(e.getSource() == openItem) {
+			
+		}
+		
+		if(e.getSource() == saveItem) {
+			
+			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setCurrentDirectory(new File("."));
+			
+			int response = fileChooser.showSaveDialog(null);
+			
+			if(response == JFileChooser.APPROVE_OPTION) {
+				
+				File file;
+				PrintWriter fileOut;
+				
+				file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+				try 
+				{
+					fileOut = new PrintWriter(file);
+				} 
+				catch (FileNotFoundException e1) 
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}		
+			}
+			
+		}
+		if(e.getSource() == exitItem) {
+			
+			System.exit(0);
+			
 		}
 		
 	}
