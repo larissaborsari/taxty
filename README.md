@@ -1,7 +1,7 @@
 # Texty - text editor
 This Text Editor was created based on Youtube tutorial -> [Youtube](https://rb.gy/a3u0v) for study and practice purpuses only.
 
-It contains a very simple interface where you can add some text, change is font, change the font color and size, open a file and save your file. 
+It contains a very simple interface where you can add some text, change it's font, change the font color and size, open a file and save your file. 
 This funcionalities are shown in the following images.
 
 <ul>
